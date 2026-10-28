@@ -1,0 +1,71 @@
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #f59e0b;
+  --ok: #22c55e;
+  --ko: #ef4444;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #1e293b, var(--bg));
+  color: var(--text);
+  padding: 16px;
+}
+
+.card {
+  width: min(640px, 100%);
+  background: var(--card);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+h1 { margin: 0 0 8px; }
+h2 { font-size: 20px; line-height: 1.4; margin: 20px 0; }
+p { color: var(--muted); }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 12px 16px;
+}
+button:disabled { cursor: default; }
+.primary { background: var(--accent); border-color: var(--accent); color: #111827; font-weight: 600; }
+
+.top { display: flex; justify-content: space-between; color: var(--muted); font-size: 14px; }
+#timer { font-variant-numeric: tabular-nums; font-weight: 600; }
+#timer.urgent { color: var(--ko); }
+
+.bar { height: 4px; background: rgba(255, 255, 255, 0.08); border-radius: 2px; margin-top: 8px; }
+.bar-fill { height: 100%; width: 0; background: var(--accent); border-radius: 2px; transition: width 0.3s; }
+
+.answers { display: grid; gap: 10px; }
+.answers button { text-align: left; }
+.answers button:not(:disabled):hover { border-color: var(--accent); }
+.answers button.correct { border-color: var(--ok); background: rgba(34, 197, 94, 0.15); }
+.answers button.wrong { border-color: var(--ko); background: rgba(239, 68, 68, 0.15); }
+
+.feedback { min-height: 1.5em; margin: 16px 0; }
+#next { width: 100%; }
+
+.score { font-size: 48px; color: var(--text); margin: 0; }
+.best { font-size: 14px; }
+
+.review { padding-left: 20px; font-size: 14px; }
+.review li { margin: 10px 0; color: var(--muted); }
+.review li strong { color: var(--text); }
+.review li.ok::marker { color: var(--ok); }
+.review li.ko::marker { color: var(--ko); }
